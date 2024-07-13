@@ -1,0 +1,11 @@
+fetch("http://localhost:5000/data",{
+    method:"Patch",
+    headers:{
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+        "id":"5",
+        "name":"sql",
+        "year":"1980s"
+    })
+});

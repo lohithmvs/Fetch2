@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Input Example</title>
+    <style>
+        #output {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        #message {
+            margin-top: 10px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="inputBox">Enter Data:</label>
+        <input type="text" id="inputBox">
+        <button id="getButton">Get</button>
+        <button id="deleteButton">Delete</button>
+    </div>
+    <div id="output"></div>
+    <div id="message">Data was deleted</div>
+
+    <script>
+        document.getElementById("getButton").addEventListener("click", function() {
+            const inputBox = document.getElementById("inputBox");
+            const output = document.getElementById("output");
+
+            // Display the value in the output box
+            output.textContent = "Entered Data: " + inputBox.value;
+            output.style.display = "block";
+        });
+
+        document.getElementById("deleteButton").addEventListener("click", function() {
+            const inputBox = document.getElementById("inputBox");
+            const output = document.getElementById("output");
+            const message = document.getElementById("message");
+
+            // Clear the input box and hide the output
+            inputBox.value = "";
+            output.style.display = "none";
+
+            // Show the delete message
+            message.style.display = "block";
+
+            // Hide the message after 2 seconds
+            setTimeout(() => {
+                message.style.display = "none";
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register form</h1>
+    <form id="forform">
+        <label for="name1">First Name:</label>
+        <input type="text" id="name1" name=" First name">
+        <label for="name2">Last Name:</label>
+        <input type="text" id="name2" name="Last Name">
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email">
+        <label for="Password">Password</label>
+        <input type="Password" id="Password" name="Password">
+        <label for="Mobile">Mobile Number</label>
+        <input type="text" id="Mobile" name="Mobile">
+        <input type="submit" value="Register">
+    </form>
+    <script>
+         document.getElementById("forform").addEventListener("submit",function(event){
+            let data={
+                FirstName :document.getElementById("name1").value,
+                LastName:document.getElementById("name2").value,
+                Email:document.getElementById("Email").value,
+                Password:document.getElementById("Password").value,
+                Mobile:document.getElementById("Mobile").value
+            }
+            fetch("http://localhost:3000/data",{
+                method:"Post",
+                header:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(data)
+            })
+            window.open("./login.html");
+        }) 
+    </script>
+</body>
+</html>

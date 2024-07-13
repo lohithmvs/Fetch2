@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login form</h1>
+    <form action="" id="forform">
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email">
+        <label for="Password">Password</label>
+        <input type="Password" id="Password" name="Password">
+        <input type="submit" value="Login">
+    </form>
+    <script>
+        document.getElementById("forform").addEventListener("submit",function(event){
+            var email=encodeURIComponent(document.getElementById("Email").value);
+            var pass=encodeURIComponent(document.getElementById("Password").value);
+            fetch(`http://localhost:3000/data?Password=${pass}&Email=${email}`).then(response=>{
+                var url=`http://localhost:3000/data?Email=${email}&Password=${pass}`; 
+                if(response.ok){
+                    console.log("Request URL:", url);
+                    console.log("success");
+                    return response.json();
+                }
+                else{
+                    return response.statusText;
+                }
+            }).then(data=>console.log(data));
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
